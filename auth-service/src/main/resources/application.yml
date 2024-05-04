@@ -1,0 +1,63 @@
+server:
+  port: 8086
+  servlet:
+    context-path: /auth-service
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: auth-service
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url:  jdbc:mysql://192.168.30.98:3306/screen_recording?serverTimezone=GMT%2B7&allowMultiQueries=true
+    hikari:
+      username: dev
+      password: ud75D&1U1HP6
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    org:
+      springframework.web: debug
+      hibernate:
+        SQL: DEBUG
+        type: TRACE
+  file:
+    name: logs/auth-service.log
+  logback:
+    rolling policy:
+      file-name-pattern: logs/%d{yyyy-MM, aux}/app.%d{yyyy-MM-dd}.%i.log
+      max-file-size: 100MB
+      total-size-cap: 10GB
+      max-history: 3
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"  # Expose all actuator endpoints, be cautious with this in production
+#  tracing:
+#    sampling:
+#      probability: 1.0
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /swagger-ui
+  swagger-ui:
+    enabled: true
+    path: /swagger-doc
+    tryItOutEnabled: true
+    persistAuthorization: true
+    operationsSorter: method
+    tagsSorter: alpha
+    filter: true
+  enable-kotlin: false
