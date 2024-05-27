@@ -7,6 +7,7 @@
 		<artifactId>common</artifactId>
 		<version>0.0.1</version>
 	</parent>
+	<packaging>jar</packaging>
 
 	<artifactId>common-base</artifactId>
 
@@ -15,5 +16,9 @@
 
 	<dependencies>
 
-	</dependencies>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-websocket</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -1,11 +1,13 @@
 package com.example.common.base.util;
 
 import com.example.common.base.dto.PageData;
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 
 import java.util.HashMap;
 import java.util.List;
 
+@Data
 public class ApiResult<T> {
     private int status;
     private String message;
