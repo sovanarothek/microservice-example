@@ -8,28 +8,13 @@ spring:
     active: local
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-      routes:
-        - id: auth-service
-          uri: http://127.0.0.1:8086
-          predicates:
-            - Path= /auth-service/**
-          metadata:
-            response-timeout: 30000
-            connect-timeout: 20000
-        - id: order-service
-          uri: http://127.0.0.1:8085
-          predicates:
-            - Path=/v1/order-service/**
-          metadata:
-            response-timeout: 30000
-            connect-timeout: 20000
-        - id: product-service
-          uri: http://127.0.0.1:8080
-          predicates:
-            - Path=/v1/product-service/**
-          metadata:
-            response-timeout: 30000
-            connect-timeout: 20000
+      httpclient:
+        responseTimeout: 30000
+        connectTimeout: 20000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true

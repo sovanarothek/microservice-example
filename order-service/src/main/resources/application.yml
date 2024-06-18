@@ -68,3 +68,10 @@ springdoc:
 
 product-service:
   url: http://127.0.0.1:9770/v1/product-service
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
